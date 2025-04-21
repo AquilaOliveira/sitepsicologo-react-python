@@ -1,0 +1,89 @@
+.artigototal {
+    text-align: center;
+  }
+  .artigos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .artigo {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-basis: 25%;
+  }
+  
+  .artigo_img {
+    width: 80px;
+    display: block;
+  }
+  
+  .artigo_link {
+    text-decoration: none;
+    color: var(--letras);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .artigo:hover {
+    background-color: rgba(185, 185, 185, 0.137);
+  }
+  
+  .artigo_subtitulo {
+    width: 60%;
+    text-align: center;
+    flex-basis: 40%;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 8px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .reflexoes {
+    background-color: #a3bb8ba0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .textoreflexoes {
+    display: flex;
+    justify-content: center;
+    margin: 20px 100px 50px 100px;
+  }
+  .reflexoes > h2 {
+    margin-top: 50px;
+    text-align: center;
+  }
+  .reflexaoUm {
+    margin-right: 10px;
+    padding-right: 50px;
+  }
+  .reflaxaoDois {
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+
+  .dicas {
+    margin: 50px 100px 50px 100px;
+    text-align: center;
+  }
+  .dicaa {
+    text-align: justify;
+  }
+  .dicas > h2 {
+    text-align: center;
+  }
+  .textodicas {
+    display: flex;
+    justify-content: center;
+    flex-basis: 40%;
+    gap: 25px;
+  }

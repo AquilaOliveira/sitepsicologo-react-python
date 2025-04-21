@@ -1,0 +1,39 @@
+.celular > header {
+    background: #283c19;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  .logo > p {
+    font-family: "Mrs Saint Delafield", serif;
+    font-size: 48px;
+    margin: 10px 0 0px 50px;
+    color: white;
+  }
+  
+  .botoes-home > a > button {
+    background-color: var(--corprincipal);
+    border-color: var(--corprincipal);
+    border: var(--corprincipal);
+    margin-bottom: 5px;
+  }
+  
+  .botoes-home > a > button:hover {
+    background-color: #4d643c;
+    border-color: #283c19;
+  }
+  
+  .botoes-home > a > button:active {
+    background-color: var(--corprincipal) !important;
+  }
+  
+  .botoes-home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+ 

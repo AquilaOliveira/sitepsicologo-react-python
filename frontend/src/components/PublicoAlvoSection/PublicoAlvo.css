@@ -1,0 +1,17 @@
+#publico-alvo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 100px 50px 100px;
+    text-align: justify;
+  }
+  .publico-alvo {
+    flex-basis: 50%;
+    margin-right: 40px;
+  }
+  .condicoes-tratadas > ul {
+    color: var(--letras);
+  }
+  .condicoes-tratadas {
+    margin-top: 70px;
+  }
