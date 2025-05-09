@@ -1,12 +1,27 @@
 
 import React from 'react';
-import './App.css'; 
+import './App.css';
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom"; 
 import HomePage from './pages/HomePage';
+import Login from './pages/login';
+import Cadastro from './pages/cadastro';
+import Acesso from './pages/acesso';
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Router>
+        <Link to="/"></Link>
+        <Link to="/login"></Link>
+        <Link to="/cadastro"></Link>
+        <Link to="/acesso"></Link>
+        <Routes>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/cadastro" element={<Cadastro></Cadastro>}></Route>
+          <Route path="/acesso" element={<Acesso></Acesso>}></Route>
+        </Routes>
+      </Router>
     </>
   );
 }
