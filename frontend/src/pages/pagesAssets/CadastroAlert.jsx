@@ -2,9 +2,8 @@ import React from "react";
 import { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-import {name} from './Cadastro'
 
-function CadastroAlert(props) {
+function CadastroAlert({ name }) {
   const [show, setShow] = useState(true);
 
   return (
