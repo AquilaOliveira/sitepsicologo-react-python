@@ -68,7 +68,7 @@ const errorMessage = () => {
 
   return (
     <>
-      <div className="body">
+      <div className="cadastro-body">
         <div className="form">
           <div className="title">
             <h1>Cadastro</h1>

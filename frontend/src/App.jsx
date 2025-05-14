@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom"; 
 import HomePage from './pages/HomePage';
 import Login from './pages/login';
-import CadastroForm from './pages/Cadastro';
+import CadastroForm from './pages/cadastro';
 import Acesso from './pages/acesso';
 
 function App() {
