@@ -29,8 +29,8 @@ const AgendamentoForm = () => {
   return (
     <section id="contato" className="loeagen">
       <h2>Agendamento e Contato</h2>
-     
-      <form onSubmit={handleSubmit}>
+
+      <form className="formagendamento" onSubmit={handleSubmit}>
         <label htmlFor="nome">Nome:</label>
         <input
           type="text"

@@ -25,7 +25,7 @@
     color: #000000;
   }
   
-  form {
+  #formagendamento {
     display: flex;
     flex-direction: column;
     width: 100%;

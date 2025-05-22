@@ -1,0 +1,88 @@
+
+#corpologin {
+min-height: calc(100vh - 160px); /* ajusta altura excluindo header/footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  width: 100vw;
+  }
+  
+  .body-login {
+        background: white;
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+  }
+
+#loginh1 {
+  color: #3d5a40;
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+ 
+#headerlogin, #footerlogin{
+    height: 80px;
+
+}
+.body-login p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 8px;
+  }
+
+.form-group {
+  margin-bottom: 1.5rem; 
+  display: flex;
+  flex-direction: column;
+}
+.body-login a {
+    color: #3d5a40;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+.loginlabel {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+input.form-control:focus {
+  border-color: #5a7f51;
+  outline: none;
+  background-color: #fff;
+}
+
+
+
+.card-body p {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.card-body p a {
+  color: #5a7f51;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.card-body p a:hover {
+  text-decoration: underline;
+}
+
+  

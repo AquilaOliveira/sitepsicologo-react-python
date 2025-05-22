@@ -4,6 +4,9 @@ footer {
     justify-content: center;
     padding: 20px 0;    
     align-items: center;  
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
   }
   
   footer > p {
