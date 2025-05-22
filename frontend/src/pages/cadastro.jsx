@@ -99,7 +99,7 @@ const errorMessage = () => {
               onChange={handleCPF}
               className="input"
               value={CPF}
-              type="number"
+              type="text"
             />
             <label className="label">Telefone:</label>
             <input
