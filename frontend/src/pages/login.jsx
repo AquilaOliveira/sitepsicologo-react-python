@@ -1,10 +1,11 @@
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import Headerlimpo from "../components/Header/HeaderLimpo";
 
 function Login() {
     return (
       <>
-          <Header id="headerlogin"></Header>
+          <Headerlimpo id="headerlogin"></Headerlimpo>
           <div id="corpologin">
             <div className="body-login">
               <div className="card-body">

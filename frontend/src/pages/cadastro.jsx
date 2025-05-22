@@ -1,6 +1,7 @@
 import CadastroAlert from "./pagesAssets/CadastroAlert";
 import "./Cadastro.css";
 import { useState } from "react";
+import Headerlimpo from "../components/Header/HeaderLimpo";
 
 export default function CadastroForm() {
 
@@ -68,36 +69,60 @@ const errorMessage = () => {
 
   return (
     <>
+      <Headerlimpo> </Headerlimpo>
       <div className="cadastro-body">
         <div className="form">
           <div className="title">
             <h1>Cadastro</h1>
           </div>
-
           <div className="messages">
             {errorMessage()}
             {successMessage()}
           </div>
-
           <form>
-
             <label className="label">Nome:</label>
-            <input onChange={handleName} className="input" value={name} type="text" />
+            <input
+              onChange={handleName}
+              className="input"
+              value={name}
+              type="text"
+            />
             <label className="label">Email:</label>
-            <input onChange={handleEmail} className="input" value={email} type="email" />
+            <input
+              onChange={handleEmail}
+              className="input"
+              value={email}
+              type="email"
+            />
             <label className="label">CPF:</label>
-            <input onChange={handleCPF} className="input" value={CPF} type="number" />
+            <input
+              onChange={handleCPF}
+              className="input"
+              value={CPF}
+              type="number"
+            />
             <label className="label">Telefone:</label>
-            <input onChange={handleTel} className="input" value={tel} type="text" />
+            <input
+              onChange={handleTel}
+              className="input"
+              value={tel}
+              type="text"
+            />
             <label className="label">Senha:</label>
-            <input onChange={handlePassword} className="input" value={password} type="password" />
-
-            <button onClick={handleSubmit} className="btn" type="submit">Cadastrar</button>
-
-
+            <input
+              onChange={handlePassword}
+              className="input"
+              value={password}
+              type="password"
+            />
+            <button onClick={handleSubmit} className="btn" type="submit">
+              Cadastrar
+            </button>
             <div className="cadastrado">
               <p>Já tem o cadastro?</p>
-              <a href="/login" className="link">Entre aqui</a>
+              <a href="/login" className="link">
+                Entre aqui
+              </a>
             </div>
           </form>
         </div>

@@ -7,7 +7,7 @@ import PublicoAlvoSection from '../components/PublicoAlvoSection/PublicoAlvoSect
 import BlogSection from '../components/BlogSection/BlogSection';
 import FAQ from '../components/FAQ/FAQ';
 import AgendamentoContato from '../components/AgendamentoContato/AgendamentoContato';
-
+import Navbar from '../components/navbar/navbar';
 import Footer from '../components/Footer/Footer';
 import './HomePage.css';
 import HeroSection from '../components/HeroSection/HeroSection';
@@ -15,16 +15,17 @@ import HeroSection from '../components/HeroSection/HeroSection';
 const HomePage = () => {
   return (
     <>
-     <div className='celular'><Header /></div> 
+      <div className="celular">
+        <Header></Header>
+      </div>
       <main>
-        <HeroSection/>
+        <HeroSection />
         <AboutSection />
         <TerapiaSection />
         <PublicoAlvoSection />
         <BlogSection />
         <FAQ />
         <AgendamentoContato />
-       
       </main>
       <Footer />
     </>
