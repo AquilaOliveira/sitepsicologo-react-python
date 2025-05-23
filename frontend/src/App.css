@@ -29,3 +29,10 @@ body, html {
   margin: 0;
   height: 100vh;
 }
+button:hover{
+  background-color: var(--corfundo2);
+}
+.login-link > a{
+  text-decoration: underline;
+  color: var(--corprincipal);
+}

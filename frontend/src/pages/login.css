@@ -1,92 +1,73 @@
-
-#corpologin {
-min-height: calc(100vh - 160px);
+.login-container {
+  min-height: calc(100vh - 160px); 
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 40px 20px;
-  width: 100vw;
-  }
-  
-  .body-login {
-        background: white;
-        padding: 2.5rem 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 400px;
-        text-align: center;
-  }
-
-#loginh1 {
-  color: #3d5a40;
-  margin-bottom: 10px;
-  font-size: 26px;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding: 2rem;
 }
- 
-#headerlogin, #footerlogin{
-    height: 80px;
 
+.login-card {
+  background-color: white;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
-.body-login p {
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: 8px;
-  }
 
-.form-group {
-  margin-bottom: 1.5rem; 
-  display: flex;
-  flex-direction: column;
-}
-.body-login a {
-    color: #3d5a40;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-.loginlabel {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+.login-card h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
   color: #333;
 }
 
-input.form-control {
+.login-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.login-form .form-group {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.login-form input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.6rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
-input.form-control:focus {
-  border-color: #5a7f51;
-  outline: none;
-  background-color: #fff;
+.login-button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  width: 100%;
 }
 
+.login-button:hover {
+  background-color: #0056b3;
+}
 
-
-.card-body p {
-  text-align: center;
+.login-link {
   margin-top: 1rem;
   font-size: 0.9rem;
 }
-
-.card-body p a {
-  color: #5a7f51;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.card-body p a:hover {
-  text-decoration: underline;
-}
-
-#footerlogin{
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
+#headerlimpo, footer{
+  height: 60px;
 }

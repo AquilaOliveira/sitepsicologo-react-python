@@ -2,6 +2,7 @@ import CadastroAlert from "./pagesAssets/CadastroAlert";
 import "./Cadastro.css";
 import { useState } from "react";
 import Headerlimpo from "../components/Header/HeaderLimpo";
+import Footer from "../components/Footer/Footer";
 
 export default function CadastroForm() {
 
@@ -127,6 +128,7 @@ const errorMessage = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
