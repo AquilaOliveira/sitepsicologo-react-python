@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     flex: 1;  
-    padding: 20px;
+    padding: 10px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgb(0, 0, 0);
@@ -24,64 +24,55 @@
     font-size: 24px;
     color: #000000;
   }
-  
-  #formagendamento {
+
+   .formagendamento {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    
+  }
+  
+  .form-row > div {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  input, textarea, button {
     width: 100%;
-    max-width: 600px;
-  }
-  
-  label {
-    margin: 10px 0 5px;
-  }
-  
-  input,
-  textarea,
-  .react-datepicker__input-container input {
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 0.5rem;
+    border-radius: 4px;
     border: 1px solid #ccc;
-    border-radius: 5px;
   }
   
   textarea {
+    min-height: 100px;
     resize: vertical;
-    height: 150px;
   }
   
-  button {
-    background-color: #4caf50;
-    border: none;
+  button[type="submit"] {
+    background-color: #4d643c;
     color: white;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border: none;
+    padding: 0.5rem 1rem;
   }
   
-  button:hover {
-    background-color: #45a049;
+  button[type="submit"]:hover {
+    background-color: #218838;
   }
-
-  .calendario-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  .calendario-input {
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
   
   #local {
     flex: 1; 

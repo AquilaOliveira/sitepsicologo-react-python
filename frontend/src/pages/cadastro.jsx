@@ -71,7 +71,7 @@ const errorMessage = () => {
     <>
       <Headerlimpo> </Headerlimpo>
       <div className="cadastro-body">
-        <div className="form">
+        <div className="formcadastro">
           <div className="title">
             <h1>Cadastro</h1>
           </div>

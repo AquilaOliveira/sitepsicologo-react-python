@@ -31,39 +31,49 @@ const AgendamentoForm = () => {
       <h2>Agendamento e Contato</h2>
 
       <form className="formagendamento" onSubmit={handleSubmit}>
-        <label htmlFor="nome">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          value={formData.nome}
-          onChange={handleChange}
-          required
-        />
+        <div className="form-row">
+          <div>
+            <label htmlFor="nome">Nome:</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
 
-        <label htmlFor="mensagem">Mensagem:</label>
-        <textarea
-          id="mensagem"
-          name="mensagem"
-          value={formData.mensagem}
-          onChange={handleChange}
-          required
-        />
+        <div>
+          <label htmlFor="mensagem">Mensagem:</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            value={formData.mensagem}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <CalendarioInput
-          selectedDate={formData.data}
-          onChange={handleDateChange}
-        />
+        <div>
+          <CalendarioInput
+            selectedDate={formData.data}
+            onChange={handleDateChange}
+          />
+        </div>
 
         <button type="submit">Enviar</button>
       </form>

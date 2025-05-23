@@ -9,7 +9,7 @@ export default function Form({ extraFields = [], onSubmit, buttonText = "Enviar"
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       {/* Campo Nome */}
       {extraFields.find(field => field.name === 'nome') && (
         <div>
