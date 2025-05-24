@@ -1,7 +1,7 @@
 import CadastroAlert from "./pagesAssets/CadastroAlert";
 import "./Cadastro.css";
 import { useState } from "react";
-import Headerlimpo from "../components/Header/HeaderLimpo";
+import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
 export default function CadastroForm() {
@@ -70,7 +70,7 @@ const errorMessage = () => {
 
   return (
     <>
-      <Headerlimpo> </Headerlimpo>
+      <Header isLogin ></Header>
       <div className="cadastro-body">
         <div className="formcadastro">
           <div className="title">

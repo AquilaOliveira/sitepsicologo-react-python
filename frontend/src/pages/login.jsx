@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer/Footer";
-import Headerlimpo from "../components/Header/HeaderLimpo";
+import Header from "../components/Header/Header";
 import "./Login.css";
 
 function Login() {
@@ -11,14 +11,11 @@ function Login() {
     e.preventDefault();
     console.log("Email:", email);
     console.log("Senha:", password);
-
-    // Aqui você pode adicionar lógica de autenticação
   };
 
   return (
     <>
-      <Headerlimpo id="headerlogin" />
-
+      <Header isLogin ></Header>
       <div className="login-container">
         <div className="login-card">
           <h1>Login</h1>
