@@ -62,7 +62,7 @@ export default function CadastroForm() {
       senha: password,
       telefone: tel,
       cpf: CPF,
-      tipo_usuario: "paciente", 
+      tipo_usuario: "paciente",
     };
 
     try {
@@ -96,100 +96,104 @@ export default function CadastroForm() {
       setSubmitted(false);
     }
   };
-  
 
-const successMessage = () => {
-  return (
-    <div className="success" style={{display: submitted ? "" : "none"}}>
-      <CadastroAlert name = {name}/>
-    </div>
-  )
-}
 
-const errorMessage = () => {
-  return( 
-    <>
-    <div className="error" style={{display: error ? "" : "none"}}> 
-      <p>Por favor, insira todos os campos.</p>
-    </div>
-    </>
-  )
-}
+  const successMessage = () => {
+    return (
+      <div className="success" style={{ display: submitted ? "" : "none" }}>
+        <CadastroAlert name={name} />
+      </div>
+    )
+  }
+
+  const errorMessage = () => {
+    return (
+      <>
+        <div className="error" style={{ display: error ? "" : "none" }}>
+          <p>Por favor, insira todos os campos.</p>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
       <Header isLogin ></Header>
-      <div className="cadastro-body">
-        <div className="formcadastro">
-          <div className="title">
-            <h1>Cadastro</h1>
-          </div>
-          <div className="messages">
-            {errorMessage()}
-            {successMessage()}
-          </div>
-          <form>
-            <label className="label">Nome:</label>
-            <input
-              onChange={handleName}
-              className="input"
-              value={name}
-              placeholder="Digite seu nome"
-              type="text"
-            />
-            <label className="label">Email:</label>
-            <input
-              onChange={handleEmail}
-              className="input"
-              value={email}
-              placeholder="Digite seu email"
-              type="email"
-            />
-            <label className="label">CPF:</label>
-            <input
-              onChange={handleCPF}
-              className="input"
-              value={CPF}
-              placeholder="Digite seu CPF"
-              type="text"
-            />
-            <label className="label">Telefone:</label>
-            <input
-              onChange={handleTel}
-              className="input"
-              value={tel}
-              placeholder="Digite seu telefone"
-              type="text"
-            />
-            <label className="label">Senha:</label>
-            <input
-              onChange={handlePassword}
-              className="input"
-              value={password}
-              placeholder="Digite sua senha"
-              type="password"
-            />
-            <input
-              className="input"
-              type="checkbox"
-            />
-            <div className="checkbox">
-              <input type="checkbox" id="aceitar" name="aceitar" />
-              <label htmlFor="aceitar">Aceito os termos de uso</label>
+      <div className="containerCadastro">
+        <div className="cadastro-body">
+          <div className="formcadastro">
+            <div className="title">
+              <h1>Cadastro</h1>
             </div>
-            <button onClick={handleSubmit} className="btn" type="submit">
-              Cadastrar
-                <svg className="svgTamDefault"> /* Tem que configurar esse treco que eu n consegui ainda */
-                  <img src={seta} alt="Seta para a direita"/>
-                </svg>
-            </button>
-            <div className="cadastrado">
-              <p>Já tem o cadastro?</p>
-              <a href="/login" className="link">
-                Entre aqui
-              </a>
+            <div className="messages">
+              {errorMessage()}
+              {successMessage()}
             </div>
-          </form>
+            <div className="formWrapper">
+              <form>
+                <label className="label">Nome:</label>
+                <input
+                  onChange={handleName}
+                  className="input"
+                  value={name}
+                  placeholder="Digite seu nome"
+                  type="text"
+                />
+                <label className="label">Email:</label>
+                <input
+                  onChange={handleEmail}
+                  className="input"
+                  value={email}
+                  placeholder="Digite seu email"
+                  type="email"
+                />
+                <label className="label">CPF:</label>
+                <input
+                  onChange={handleCPF}
+                  className="input"
+                  value={CPF}
+                  placeholder="Digite seu CPF"
+                  type="text"
+                />
+                <label className="label">Telefone:</label>
+                <input
+                  onChange={handleTel}
+                  className="input"
+                  value={tel}
+                  placeholder="Digite seu telefone"
+                  type="text"
+                />
+                <label className="label">Senha:</label>
+                <input
+                  onChange={handlePassword}
+                  className="input"
+                  value={password}
+                  placeholder="Digite sua senha"
+                  type="password"
+                />
+                <input
+                  className="input"
+                  type="checkbox"
+                />
+                <div className="checkbox">
+                  <input type="checkbox" id="aceitar" name="aceitar" />
+                  <label htmlFor="aceitar">Aceito os termos de uso</label>
+                </div>
+                <button onClick={handleSubmit} className="btn" type="submit">
+                  Cadastrar
+                  <svg className="svgTamDefault"> /* Tem que configurar esse treco que eu n consegui ainda */
+                    <img src={seta} alt="Seta para a direita" />
+                  </svg>
+                </button>
+                <div className="cadastrado">
+                  <p>Já tem o cadastro?</p>
+                  <a href="/login" className="link">
+                    Entre aqui
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
       <Footer></Footer>
