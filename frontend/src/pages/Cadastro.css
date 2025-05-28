@@ -95,11 +95,9 @@ h1 {
 
   .link {
     color: var(--corfundo2);
-    text-decoration: none;
-    font-weight: bold;
+    text-decoration: underline;
   }
 
   .link:hover {
-    text-decoration: none;
     color: rgb(38, 73, 42);
   }

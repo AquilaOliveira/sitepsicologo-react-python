@@ -17,16 +17,6 @@
   text-align: center;
 }
 
-.login-card h1 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  color: #333;
-}
-
-.login-card p {
-  color: #666;
-  margin-bottom: 1.5rem;
-}
 
 .login-form .form-group {
   margin-bottom: 1.25rem;
@@ -60,14 +50,10 @@
   width: 100%;
 }
 
-.login-button:hover {
-  background-color: #0056b3;
+.login-link{
+  margin-top: 1rem;
 }
 
-.login-link {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-#headerlimpo, footer{
-  height: 60px;
+.login-link :hover{
+  color: rgb(38, 73, 42);
 }
