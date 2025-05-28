@@ -3,6 +3,8 @@ import "./Cadastro.css";
 import { useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import seta from "../assets/icons/seta.svg";
+
 
 export default function CadastroForm() {
 
@@ -132,6 +134,7 @@ const errorMessage = () => {
               onChange={handleName}
               className="input"
               value={name}
+              placeholder="Digite seu nome"
               type="text"
             />
             <label className="label">Email:</label>
@@ -139,6 +142,7 @@ const errorMessage = () => {
               onChange={handleEmail}
               className="input"
               value={email}
+              placeholder="Digite seu email"
               type="email"
             />
             <label className="label">CPF:</label>
@@ -146,6 +150,7 @@ const errorMessage = () => {
               onChange={handleCPF}
               className="input"
               value={CPF}
+              placeholder="Digite seu CPF"
               type="text"
             />
             <label className="label">Telefone:</label>
@@ -153,6 +158,7 @@ const errorMessage = () => {
               onChange={handleTel}
               className="input"
               value={tel}
+              placeholder="Digite seu telefone"
               type="text"
             />
             <label className="label">Senha:</label>
@@ -160,10 +166,22 @@ const errorMessage = () => {
               onChange={handlePassword}
               className="input"
               value={password}
+              placeholder="Digite sua senha"
               type="password"
             />
+            <input
+              className="input"
+              type="checkbox"
+            />
+            <div className="checkbox">
+              <input type="checkbox" id="aceitar" name="aceitar" />
+              <label htmlFor="aceitar">Aceito os termos de uso</label>
+            </div>
             <button onClick={handleSubmit} className="btn" type="submit">
               Cadastrar
+                <svg className="svgTamDefault"> /* Tem que configurar esse treco que eu n consegui ainda */
+                  <img src={seta} alt="Seta para a direita"/>
+                </svg>
             </button>
             <div className="cadastrado">
               <p>Já tem o cadastro?</p>
