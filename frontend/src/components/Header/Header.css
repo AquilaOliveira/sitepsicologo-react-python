@@ -5,11 +5,18 @@
     justify-content: space-between;
     color: white;
   }
-  
-  .logo > p {
+  #nomepsi{
+    background-color: #283c19;
+    display: flex;
+    border: #283c19;
+  }
+  #nomepsi :hover{
+    background-color: var(--corsecundaria);
+  }
+  #nomepsi > p {
     font-family: "Mrs Saint Delafield", serif;
     font-size: 48px;
-    margin: 10px 0 0px 50px;
+    margin: 15px 0 0 8px;
     color: white;
   }
   

@@ -6,7 +6,11 @@ function Header({isLogin = false}) {
   return (
     <header className="hideCellphone">
       <div className="logo">
-        <p>Letícia</p>
+        <Link to="/">
+          <button id='nomepsi'>
+            <p>Letícia</p>
+          </button>
+        </Link>
       </div>
       {!isLogin && (
         <nav className="botoes-home" role="group" aria-label="Basic example">
