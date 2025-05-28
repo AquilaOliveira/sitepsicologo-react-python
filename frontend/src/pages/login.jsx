@@ -7,7 +7,9 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
+  const [error, setError] = useState(false);
+
+  let handleSubmit = async (e) => {
     e.preventDefault();
 
     const usuario = {
@@ -36,6 +38,25 @@ function Login() {
       alert(err.message);
     }
   };
+
+    handleSubmit= (e) => {
+    e.preventDefault();
+    if (email == "" || password == ""){
+      setError(true);
+    }else{
+      setError(false);
+    }
+  }
+
+  const errorMessage = () => {
+    return (
+      <>
+        <div className="error" style={{ display: error ? "" : "none" }}>
+          <p>Por favor, insira todos os campos.</p>
+        </div>
+      </>
+    )
+  }
   
 
   return (
@@ -45,10 +66,12 @@ function Login() {
         <div className="login-card">
           <h1>Login</h1>
           <p>Faça login abaixo</p>
-
+          <div className="messages">
+            {errorMessage()}
+          </div>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label className="label">Email</label>
               <input
                 type="email"
                 id="email"
@@ -60,7 +83,7 @@ function Login() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">Senha</label>
+              <label className="label">Senha</label>
               <input
                 type="password"
                 id="password"

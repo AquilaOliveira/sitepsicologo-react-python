@@ -101,3 +101,9 @@ h1 {
   .link:hover {
     color: rgb(38, 73, 42);
   }
+
+.svgTamDefault {
+  padding-left: 10px;
+  height: 15px;
+  width: 30px;
+}
