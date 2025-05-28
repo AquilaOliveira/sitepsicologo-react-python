@@ -13,15 +13,7 @@ function CadastroAlert({ name }) {
         <p>
           Olá {name}, seu cadastro foi realizado com sucesso, para continuar, acesse a página de login.
         </p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={() => setShow(false)} variant="outline-success">
-            Fechar
-          </Button>
-        </div>
       </Alert>
-
-      {!show && <Button onClick={() => setShow(true)}>Mostrar alerta.</Button>}
     </>
   );
 }

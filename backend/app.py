@@ -17,9 +17,11 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy 
 from sqlalchemy.types import TypeDecorator, String
 from datetime import datetime, date, time
+from flask_cors import CORS
+
 
 app = Flask(__name__)
-
+CORS(app)
 # Configuração do banco de dados SQLite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clinica.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

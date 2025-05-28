@@ -7,11 +7,36 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Senha:", password);
+
+    const usuario = {
+      email: email,
+      senha: password,
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(usuario),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.erro || "Erro ao fazer login");
+      }
+
+      alert(data.mensagem || "Login realizado com sucesso!");
+
+    } catch (err) {
+      alert(err.message);
+    }
   };
+  
 
   return (
     <>

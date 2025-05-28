@@ -40,15 +40,61 @@ export default function CadastroForm() {
     setSubmitted(false);
   }
 
-  const handleSubmit= (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name == "" || email == "" || CPF == "" || tel == "" || password == ""){
+
+    if (
+      name === "" ||
+      email === "" ||
+      CPF === "" ||
+      tel === "" ||
+      password === ""
+    ) {
       setError(true);
-    }else{
+      return;
+    }
+
+    const novoUsuario = {
+      nome: name,
+      email: email,
+      senha: password,
+      telefone: tel,
+      cpf: CPF,
+      tipo_usuario: "paciente", 
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/cadastro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(novoUsuario),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.erro || "Erro ao cadastrar");
+      }
+
       setSubmitted(true);
       setError(false);
+      alert(data.mensagem || "Usuário cadastrado com sucesso");
+
+      // Limpar os campos
+      setName("");
+      setEmail("");
+      setCPF("");
+      setTel("");
+      setPassword("");
+    } catch (err) {
+      alert(err.message);
+      setError(true);
+      setSubmitted(false);
     }
-  }
+  };
+  
 
 const successMessage = () => {
   return (
