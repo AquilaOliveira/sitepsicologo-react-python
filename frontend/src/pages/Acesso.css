@@ -1,0 +1,22 @@
+.acesso-container {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    color: #283c19;
+    text-align: center;
+  }
+  
+  .acesso-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .acesso-container p {
+    font-size: 1.2rem;
+    max-width: 600px;
+  }
+  

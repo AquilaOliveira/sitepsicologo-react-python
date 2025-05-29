@@ -1,46 +1,100 @@
 .hideCellphone {
-    background: #283c19;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  position: fixed;      
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: #283c19;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  padding: 0 10px;       
+  box-sizing: border-box; 
+}
+
+
+#nomepsi {
+  background-color: #283c19;
+  display: flex;
+  border: #283c19;
+}
+
+
+#nomepsi :hover {
+  background-color: var(--corsecundaria);
+}
+
+
+#nomepsi > p {
+  font-family: "Mrs Saint Delafield", serif;
+  font-size: 48px;
+  margin: 15px 0 0 8px;
+  color: white;
+}
+
+
+.botoes-home > a > button {
+  background-color: var(--corprincipal);
+  border-color: var(--corprincipal);
+  border: var(--corprincipal);
+  margin-bottom: 5px;
+}
+
+
+.botoes-home > a > button:hover {
+  background-color: #4d643c;
+  border-color: #283c19;
+}
+
+
+.botoes-home > a > button:active {
+  background-color: var(--corprincipal) !important;
+}
+
+
+.botoes-home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+  
+  .hamburger {
+    display:  ;
+    font-size: 28px;
+    background: none;
+    border: none;
     color: white;
+    cursor: pointer;
+    align-self: center; 
   }
-  #nomepsi{
-    background-color: #283c19;
-    display: flex;
-    border: #283c19;
-  }
-  #nomepsi :hover{
-    background-color: var(--corsecundaria);
-  }
-  #nomepsi > p {
-    font-family: "Mrs Saint Delafield", serif;
-    font-size: 48px;
-    margin: 15px 0 0 8px;
-    color: white;
-  }
-  
-  .botoes-home > a > button {
-    background-color: var(--corprincipal);
-    border-color: var(--corprincipal);
-    border: var(--corprincipal);
-    margin-bottom: 5px;
-  }
-  
-  .botoes-home > a > button:hover {
-    background-color: #4d643c;
-    border-color: #283c19;
-  }
-  
-  .botoes-home > a > button:active {
-    background-color: var(--corprincipal) !important;
-  }
-  
+
+
   .botoes-home {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    display: none;            
+    flex-direction: column;    
+    position: absolute;        
+    top: 60px;                 
+    right: 10px;
+    background-color: #283c19;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    z-index: 1000;           
   }
 
  
+  .botoes-home.open {
+    display: flex;
+  }
+
+  
+  .botoes-home > a > button {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
