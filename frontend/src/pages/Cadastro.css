@@ -42,7 +42,7 @@ h1 {
 
 .input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 10px;
   border-radius: 8px;
 
   transition: border-color 0.3s ease;
@@ -56,6 +56,18 @@ h1 {
 .input:focus {
   border-color: #1f3f25;
   box-shadow: 0 0 0 3px rgba(40, 80, 44, 0.2);
+}
+
+.label {
+  display: block;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--corfundo2);
+}
+
+input::placeholder {
+  text-align: center;
 }
 
 .btn {
@@ -114,8 +126,8 @@ h1 {
     color: rgb(38, 73, 42);
   }
 
-.svgTamDefault {
+.seta {
   padding-left: 10px;
-  height: 15px;
-  width: 30px;
+  height: 25px;
+  width: 35px;
 }

@@ -71,7 +71,7 @@ function Login() {
           </div>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label className="label">Email</label>
+              <label className="label"></label>
               <input
                 type="email"
                 id="email"
@@ -80,10 +80,7 @@ function Login() {
                 placeholder="Digite seu email"
                 required
               />
-            </div>
-
-            <div className="form-group">
-              <label className="label">Senha</label>
+              <label className="label"></label>
               <input
                 type="password"
                 id="password"
