@@ -3,7 +3,7 @@ import "./Cadastro.css";
 import { useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import seta from "../assets/icons/seta.svg";
+import seta from "../assets/icons/seta.ico";
 
 
 export default function CadastroForm() {
@@ -97,6 +97,13 @@ export default function CadastroForm() {
     }
   };
 
+  function validarSenha() {
+  const campo = document.getElementById("password");
+  const valor = campo.value;
+  const regex = /^[a-zA-Z0-9]+$/;
+
+  regex.test(valor) ? campo.classList.remove("error") : console.log("Senha inválida");
+  }
 
   const successMessage = () => {
     return (
@@ -133,6 +140,8 @@ export default function CadastroForm() {
               <form>
                 <label className="label"></label>
                 <input
+                  required
+                  maxLength="50"
                   onChange={handleName}
                   className="input"
                   value={name}
@@ -141,6 +150,8 @@ export default function CadastroForm() {
                 />
                 <label className="label"></label>
                 <input
+                  required
+                  maxLength="50"
                   onChange={handleEmail}
                   className="input"
                   value={email}
@@ -149,6 +160,8 @@ export default function CadastroForm() {
                 />
                 <label className="label"></label>
                 <input
+                  required
+                  maxLength="11"
                   onChange={handleCPF}
                   className="input"
                   value={CPF}
@@ -157,6 +170,8 @@ export default function CadastroForm() {
                 />
                 <label className="label"></label>
                 <input
+                  required
+                  maxLength="11"
                   onChange={handleTel}
                   className="input"
                   value={tel}
@@ -165,6 +180,11 @@ export default function CadastroForm() {
                 />
                 <label className="label"></label>
                 <input
+                  id="password"
+                  required 
+                  minLength="6"
+                  maxLength="20"
+                  onSubmit={validarSenha}
                   onChange={handlePassword}
                   className="input"
                   value={password}
@@ -176,7 +196,7 @@ export default function CadastroForm() {
                   type="checkbox"
                 />
                 <div className="checkbox">
-                  <input type="checkbox" id="aceitar" name="aceitar" />
+                  <input type="checkbox" id="aceitar" name="aceitar" required/>
                   <label htmlFor="aceitar">Aceito os termos de uso</label>
                 </div>
                 <button onClick={handleSubmit} className="btn" type="submit">
