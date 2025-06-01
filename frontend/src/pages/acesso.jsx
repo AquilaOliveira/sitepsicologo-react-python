@@ -1,59 +1,125 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import AgendamentoCard from "../pages/pagesAssets/AgendamentoCard"; 
+import AgendamentoCard from "./pagesAssets/AgendamentoCard"; 
 import "./Acesso.css";
 
 function Acesso() {
-  const agendamentos = [
-    {
-      data: "18/04/2025",
-      hora: "15:00",
-      nomePaciente: "maisa ferreira",
-      psicologa: "Letícia Dias",
-    },
-    {
-      data: "27/04/2025",
-      hora: "15:00",
-      nomePaciente: "maisa ferreira",
-      psicologa: "Letícia Dias",
-    },
-    
-  ];
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState(null);
+  const [consultas, setConsultas] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleCancelar = (index) => {
-    alert(`Cancelando sessão ${index + 1}...`);
+  const carregarConsultas = (userId) => {
+    setLoading(true);
+    fetch(`http://localhost:5000/consultas/usuario/${userId}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Erro ao buscar consultas");
+        return res.json();
+      })
+      .then((data) => {
+        setConsultas(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        alert(err.message);
+        setLoading(false);
+      });
   };
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("usuario"));
+    
+    if (!userData) {
+      navigate("/login");
+      return;
+    }
+    
+    setUsuario(userData);
+    carregarConsultas(userData.id);
+
+  }, [navigate]);
+
+  const consultasDoUsuario = consultas;
+
+  const handleCancelar = (id) => {
+
+    fetch(`http://localhost:5000/consultas/${id}`,{method: "DELETE"})
+    .then((res) => {
+        if (!res.ok) throw new Error("Erro ao cancelar consultas");
+        return res.json();
+      })
+      .then((data) => {
+        if (usuario) {
+          carregarConsultas(usuario.id); // Atualiza a lista após excluir
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+        setLoading(false);
+      });
+  };
+
+  if (loading) {
+    return (
+      <>
+        <Header isLogin={true} />
+        <main className="acesso-container">
+          <p>Carregando consultas...</p>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
       <Header isLogin={true} />
       <main className="acesso-container">
-        <h1>Próximos agendamentos</h1>
-        <div style={containerStyle}>
-          {agendamentos.map((item, index) => (
-            <AgendamentoCard
-              key={index}
-              data={item.data}
-              hora={item.hora}
-              nomePaciente={item.nomePaciente}
-              psicologa={item.psicologa}
-              onCancelar={() => handleCancelar(index)}
-            />
-          ))}
-        </div>
+        {usuario && (
+          <>
+            <h1>Olá, {usuario.nome}</h1>
+            <p>Você está logado como <b>{usuario.tipo_usuario}</b></p>
+          </>
+        )}
+
+        <h2>Seus próximos agendamentos ({consultasDoUsuario.length})</h2>
+
+        {consultasDoUsuario.length === 0 ? (
+          <>
+            <p>Nenhum agendamento encontrado.</p>
+            <button
+              onClick={() => navigate("/agendamento")}
+              className="btn-agendar"
+            >
+              Agendar nova consulta
+            </button>
+          </>
+        ) : (
+          <div className="agendamento-lista">
+            {consultasDoUsuario.map((item) => (
+              <AgendamentoCard
+                key={item.id}
+                data={item.data}
+                hora={item.hora}           // ajustado
+                nomePaciente={item.nomePaciente}  // ajustado
+                psicologa={item.psicologo}    // ajustado
+                onCancelar={() => handleCancelar(item.id)}
+              />
+            ))}
+            <button
+              onClick={() => navigate("/agendamento")}
+              className="btn-agendar"
+            >
+              Agendar nova consulta
+            </button>
+          </div>
+        )}
       </main>
       <Footer />
     </>
   );
 }
-
-const containerStyle = {
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  gap: "20px",
-  marginTop: "30px"
-};
 
 export default Acesso;

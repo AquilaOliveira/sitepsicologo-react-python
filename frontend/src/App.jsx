@@ -1,28 +1,25 @@
-
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom"; 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 import HomePage from './pages/HomePage';
 import Login from './pages/login';
 import CadastroForm from './pages/cadastro';
 import Acesso from './pages/acesso';
+import AgendarConsulta from "./pages/AgendarConsulta"; // importe o novo componente
+import AgendamentoContato from './components/AgendamentoContato/AgendamentoContato';
 
 function App() {
   return (
-    <>
-      <Router>
-        <Link to="/"></Link>
-        <Link to="/login"></Link>
-        <Link to="/cadastro"></Link>
-        <Link to="/acesso"></Link>
-        <Routes>
-          <Route path="/" element={<HomePage></HomePage>}></Route>
-          <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/cadastro" element={<CadastroForm></CadastroForm>}></Route>
-          <Route path="/acesso" element={<Acesso></Acesso>}></Route>
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<CadastroForm />} />
+        <Route path="/acesso" element={<Acesso />} />
+        <Route path="/agendamento" element={<AgendarConsulta />} />
+        <Route path="/agendamento" element={<AgendamentoContato />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -109,6 +109,7 @@ def listar_usuarios():
         lista.append({
             'id': usuario.id,
             'email': usuario.email,
+            'senha': usuario.senha,
             'nome': usuario.nome,
             'telefone': usuario.telefone,
             'cpf': usuario.cpf,
@@ -131,6 +132,28 @@ def obter_usuario(id):
         'cpf': usuario.cpf,
         'tipo_usuario': usuario.tipo_usuario
     }), 200
+
+# Rota para obter um usuário por tipo 
+@app.route('/usuarios/<string:tipo_usuario>', methods=['GET'])
+def obter_usuarios_tipo(tipo_usuario):
+    Usuarios = Usuario.query.filter_by(tipo_usuario=tipo_usuario).all()
+    if not Usuarios:
+        return jsonify({'erro': 'Psicologo nao encontrado'}), 404
+    
+    listaUsuarios = []
+
+    for psicologo in Usuarios:
+        listaUsuarios.append(
+            {
+                'id': psicologo.id,
+                'email': psicologo.email,
+                'nome': psicologo.nome,
+                'telefone': psicologo.telefone,
+                'cpf': psicologo.cpf,
+                'tipo_usuario': psicologo.tipo_usuario
+            })
+
+    return jsonify(listaUsuarios), 200
 
 
 # Rota para atualizar um usuário
@@ -162,6 +185,38 @@ def deletar_usuario(id):
     db.session.delete(usuario)
     db.session.commit()
     return jsonify({'mensagem': 'Usuário deletado com sucesso'}), 200
+
+# Rota de login
+@app.route('/login', methods=['POST'])
+def login():
+    dados = request.get_json()
+
+    email = dados.get('email')
+    senha = dados.get('senha')
+
+    if not email or not senha:
+        return jsonify({'erro': 'Email e senha são obrigatórios'}), 400
+
+    usuario = Usuario.query.filter_by(email=email).first()
+
+    if not usuario:
+        return jsonify({'erro': 'Usuário não encontrado'}), 404
+
+    # Se estiver usando senhas em texto puro:
+    if usuario.senha != senha:
+        return jsonify({'erro': 'Senha incorreta'}), 401
+
+    # Se usar hashing futuramente, troque a linha acima por:
+    # if not check_password_hash(usuario.senha, senha):
+
+    return jsonify({
+        'mensagem': 'Login realizado com sucesso',
+        'usuario': {
+            'id': usuario.id,
+            'nome': usuario.nome,
+            'tipo_usuario': usuario.tipo_usuario
+        }
+    }), 200
 
 
 # TypeDecorator para armazenar horário como texto
@@ -242,6 +297,32 @@ def criar_consulta():
     db.session.commit()
 
     return jsonify({'mensagem':'Consulta agendada com sucesso'}), 201
+
+# Rota para listar consultas de um paciente ou psicólogo
+@app.route('/consultas/usuario/<int:usuario_id>', methods=['GET'])
+def listar_consultas_por_usuario(usuario_id):
+    usuario = Usuario.query.get(usuario_id)
+    if not usuario:
+        return jsonify({'erro': 'Usuário não encontrado'}), 404
+
+    if usuario.tipo_usuario == 'paciente':
+        consultas = Consulta.query.filter_by(paciente_id=usuario_id).all()
+    elif usuario.tipo_usuario == 'psicologo':
+        consultas = Consulta.query.filter_by(psicologo_id=usuario_id).all()
+    else:
+        return jsonify({'erro': 'Tipo de usuário inválido'}), 400
+
+    resultado = []
+    for c in consultas:
+        resultado.append({
+            'id': c.id,
+            'data': c.data.strftime('%d/%m/%Y'),
+            'hora': c.horario.strftime('%H:%M'),
+            'nomePaciente': c.paciente.nome,
+            'psicologo': c.psicologo.nome
+        })
+    return jsonify(resultado), 200
+
 
 # Rota para listar todas as consultas
 @app.route('/consultas', methods=['GET'])

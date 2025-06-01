@@ -3,9 +3,10 @@ import React from "react";
 function AgendamentoCard({ data, hora, nomePaciente, psicologa, onCancelar }) {
   return (
     <div style={styles.card}>
-      <p><strong>Data:</strong> {data} &nbsp;&nbsp; <strong>{hora}</strong></p>
+      <p><strong>Data:</strong> {data}</p>
+      <p><strong>Horário:</strong> {hora}</p>
       <p><strong>Nome:</strong> {nomePaciente}</p>
-      <p><strong>Psicóloga:</strong> {psicologa}</p>
+      <p><strong>Psicólogo{"("}a{")"}:</strong> {psicologa}</p>
       <button style={styles.botao} onClick={onCancelar}>
         Cancelar sessão
       </button>
