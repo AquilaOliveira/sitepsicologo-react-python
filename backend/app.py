@@ -71,6 +71,7 @@ def cadastrar_usuario():
     email = dados.get('email')
     nome = dados.get('nome')
     senha = dados.get('senha')
+    senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt())
     telefone = dados.get('telefone')
     cpf = dados.get('cpf')
     tipo_usuario = dados.get('tipo_usuario', '').lower()
@@ -90,7 +91,7 @@ def cadastrar_usuario():
     novo_usuario = Usuario(
         email=email,
         nome=nome,
-        senha=senha,
+        senha=senha_hash.decode('utf-8'),
         telefone=telefone,
         cpf=cpf,
         tipo_usuario=tipo_usuario
@@ -99,6 +100,7 @@ def cadastrar_usuario():
     db.session.commit()
 
     return jsonify({'mensagem': 'Usuário cadastrado com sucesso'}), 201
+
 
 # Rota para obter todos os usuários
 @app.route('/usuarios', methods=['GET'])
