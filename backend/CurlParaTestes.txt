@@ -47,8 +47,8 @@ curl -X POST http://localhost:5000/cadastro \
 curl -X POST http://localhost:5000/cadastro \
 -H "Content-Type: application/json" \
 -d '{
-  "email": "ana.psico@example.com",
-  "nome": "Ana Psicóloga",
+  "email": "leticia.psico@example.com",
+  "nome": "Leticia Dias Cunha",
   "senha": "senha123",
   "telefone": "11999999999",
   "cpf": "12345678904",

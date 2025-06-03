@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import "./Login.css";
@@ -6,11 +7,19 @@ import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState(false);
 
-  let handleSubmit = async (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (email === "" || password === "") {
+      setError(true);
+      return;
+    }
+
+    setError(false);
 
     const usuario = {
       email: email,
@@ -32,46 +41,35 @@ function Login() {
         throw new Error(data.erro || "Erro ao fazer login");
       }
 
-      alert(data.mensagem || "Login realizado com sucesso!");
+      // ✅ Salva o usuário no localStorage
+      localStorage.setItem("usuario", JSON.stringify(data.usuario));
+
+      // ✅ Redireciona para página Acesso
+      navigate("/acesso");
 
     } catch (err) {
       alert(err.message);
     }
   };
 
-    handleSubmit= (e) => {
-    e.preventDefault();
-    if (email == "" || password == ""){
-      setError(true);
-    }else{
-      setError(false);
-    }
-  }
-
   const errorMessage = () => {
     return (
-      <>
-        <div className="error" style={{ display: error ? "" : "none" }}>
-          <p>Por favor, insira todos os campos.</p>
-        </div>
-      </>
-    )
-  }
-  
+      <div className="error" style={{ display: error ? "" : "none" }}>
+        <p>Por favor, insira todos os campos.</p>
+      </div>
+    );
+  };
 
   return (
     <>
-      <Header isLogin ></Header>
+      <Header isLogin />
       <div className="login-container">
         <div className="login-card">
           <h1>Login</h1>
           <p>Faça login abaixo</p>
-          <div className="messages">
-            {errorMessage()}
-          </div>
+          <div className="messages">{errorMessage()}</div>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label className="label">Email</label>
               <input
                 type="email"
                 id="email"
@@ -80,10 +78,6 @@ function Login() {
                 placeholder="Digite seu email"
                 required
               />
-            </div>
-
-            <div className="form-group">
-              <label className="label">Senha</label>
               <input
                 type="password"
                 id="password"

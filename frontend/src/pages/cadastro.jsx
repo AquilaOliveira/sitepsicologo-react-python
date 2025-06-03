@@ -3,7 +3,7 @@ import "./Cadastro.css";
 import { useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import seta from "../assets/icons/seta.svg";
+import seta from "../assets/icons/seta.ico";
 
 
 export default function CadastroForm() {
@@ -97,6 +97,13 @@ export default function CadastroForm() {
     }
   };
 
+  function validarSenha() {
+  const campo = document.getElementById("password");
+  const valor = campo.value;
+  const regex = /^[a-zA-Z0-9]+$/;
+
+  regex.test(valor) ? campo.classList.remove("error") : console.log("Senha inválida");
+  }
 
   const successMessage = () => {
     return (
@@ -131,40 +138,53 @@ export default function CadastroForm() {
             </div>
             <div className="formWrapper">
               <form>
-                <label className="label">Nome:</label>
+                <label className="label"></label>
                 <input
+                  required
+                  maxLength="50"
                   onChange={handleName}
                   className="input"
                   value={name}
                   placeholder="Digite seu nome"
                   type="text"
                 />
-                <label className="label">Email:</label>
+                <label className="label"></label>
                 <input
+                  required
+                  maxLength="50"
                   onChange={handleEmail}
                   className="input"
                   value={email}
                   placeholder="Digite seu email"
                   type="email"
                 />
-                <label className="label">CPF:</label>
+                <label className="label"></label>
                 <input
+                  required
+                  maxLength="11"
                   onChange={handleCPF}
                   className="input"
                   value={CPF}
                   placeholder="Digite seu CPF"
                   type="text"
                 />
-                <label className="label">Telefone:</label>
+                <label className="label"></label>
                 <input
+                  required
+                  maxLength="11"
                   onChange={handleTel}
                   className="input"
                   value={tel}
                   placeholder="Digite seu telefone"
                   type="text"
                 />
-                <label className="label">Senha:</label>
+                <label className="label"></label>
                 <input
+                  id="password"
+                  required 
+                  minLength="6"
+                  maxLength="20"
+                  onSubmit={validarSenha}
                   onChange={handlePassword}
                   className="input"
                   value={password}
@@ -176,14 +196,11 @@ export default function CadastroForm() {
                   type="checkbox"
                 />
                 <div className="checkbox">
-                  <input type="checkbox" id="aceitar" name="aceitar" />
+                  <input type="checkbox" id="aceitar" name="aceitar" required/>
                   <label htmlFor="aceitar">Aceito os termos de uso</label>
                 </div>
                 <button onClick={handleSubmit} className="btn" type="submit">
-                  Cadastrar
-                  <svg className="svgTamDefault"> /* Tem que configurar esse treco que eu n consegui ainda */
-                    <img src={seta} alt="Seta para a direita" />
-                  </svg>
+                  Cadastrar<img className="seta" src={seta} alt="Seta para a direita"/>
                 </button>
                 <div className="cadastrado">
                   <p>Já tem o cadastro?</p>

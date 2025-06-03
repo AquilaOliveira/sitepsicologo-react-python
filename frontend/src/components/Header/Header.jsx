@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; 
 import './Header.css'
 import { Link } from 'react-router-dom';
 
-function Header({isLogin = false}) {
+function Header({ isLogin = false }) {
+  const [menuOpen, setMenuOpen] = useState(false); 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); 
+
+  
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) {
+        setMenuOpen(false); 
+      }
+    }
+
+    window.addEventListener('resize', handleResize);      
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <header className="hideCellphone">
       <div className="logo">
@@ -12,8 +28,27 @@ function Header({isLogin = false}) {
           </button>
         </Link>
       </div>
+
+      
+
+      
+      { !isLogin && isMobile && (
+        <button
+          className="hamburger"
+          aria-label="Abrir menu"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          &#9776; 
+        </button>
+      )}
+
+      
       {!isLogin && (
-        <nav className="botoes-home" role="group" aria-label="Basic example">
+        <nav
+          className={`botoes-home ${menuOpen || !isMobile ? "open" : ""}`}
+          role="group"
+          aria-label="Basic example"
+        >
           <Link to="/login">
             <button type="button" className="btn btn-primary">
               Login
