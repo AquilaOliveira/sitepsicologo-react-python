@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import AgendamentoCard from "./pagesAssets/AgendamentoCard"; 
+import AgendamentoCard from "./pagesAssets/AgendamentoCard";
 import "./Acesso.css";
 
 function Acesso() {
@@ -30,23 +30,21 @@ function Acesso() {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("usuario"));
-    
+
     if (!userData) {
       navigate("/login");
       return;
     }
-    
+
     setUsuario(userData);
     carregarConsultas(userData.id);
-
   }, [navigate]);
 
   const consultasDoUsuario = consultas;
 
   const handleCancelar = (id) => {
-
-    fetch(`http://localhost:5000/consultas/${id}`,{method: "DELETE"})
-    .then((res) => {
+    fetch(`http://localhost:5000/consultas/${id}`, { method: "DELETE" })
+      .then((res) => {
         if (!res.ok) throw new Error("Erro ao cancelar consultas");
         return res.json();
       })
@@ -80,7 +78,9 @@ function Acesso() {
         {usuario && (
           <>
             <h1>Olá, {usuario.nome}</h1>
-            <p>Você está logado como <b>{usuario.tipo_usuario}</b></p>
+            <p>
+              Você está logado como <b>{usuario.tipo_usuario}</b>
+            </p>
           </>
         )}
 
@@ -90,7 +90,7 @@ function Acesso() {
           <>
             <p>Nenhum agendamento encontrado.</p>
             <button
-              onClick={() => navigate("/agendamento")}
+              onClick={() => navigate("/agendamento/contato")}
               className="btn-agendar"
             >
               Agendar nova consulta
@@ -102,14 +102,14 @@ function Acesso() {
               <AgendamentoCard
                 key={item.id}
                 data={item.data}
-                hora={item.hora}           // ajustado
-                nomePaciente={item.nomePaciente}  // ajustado
-                psicologa={item.psicologo}    // ajustado
+                hora={item.hora} // ajustado
+                nomePaciente={item.nomePaciente} // ajustado
+                psicologa={item.psicologo} // ajustado
                 onCancelar={() => handleCancelar(item.id)}
               />
             ))}
             <button
-              onClick={() => navigate("/agendamento")}
+              onClick={() => navigate("/agendamento/contato")}
               className="btn-agendar"
             >
               Agendar nova consulta
