@@ -6,6 +6,28 @@ function Header({ isLogin = false }) {
   const [menuOpen, setMenuOpen] = useState(false); 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); 
 
+
+
+
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.pageYOffset > 0) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
+
+
   
   useEffect(() => {
     function handleResize() {
@@ -20,7 +42,7 @@ function Header({ isLogin = false }) {
   }, []);
 
   return (
-    <header className="hideCellphone">
+    <header className={`hideCellphone ${isSticky ? 'sticky' : ''}`}>
       <div className="logo">
         <Link to="/">
           <button id='nomepsi'>
