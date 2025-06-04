@@ -3,9 +3,11 @@ import "./Cadastro.css";
 import { useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-//import seta from "../assets/icons/seta.ico";
+import seta from "../assets/icons/seta.ico";
+
 
 export default function CadastroForm() {
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [CPF, setCPF] = useState("");
@@ -18,27 +20,27 @@ export default function CadastroForm() {
   const handleName = (e) => {
     setName(e.target.value);
     setSubmitted(false);
-  };
+  }
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setSubmitted(false);
-  };
+  }
 
   const handleCPF = (e) => {
     setCPF(e.target.value);
     setSubmitted(false);
-  };
+  }
 
   const handleTel = (e) => {
     setTel(e.target.value);
     setSubmitted(false);
-  };
+  }
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
     setSubmitted(false);
-  };
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,13 +98,11 @@ export default function CadastroForm() {
   };
 
   function validarSenha() {
-    const campo = document.getElementById("password");
-    const valor = campo.value;
-    const regex = /^[a-zA-Z0-9]+$/;
+  const campo = document.getElementById("password");
+  const valor = campo.value;
+  const regex = /^[a-zA-Z0-9]+$/;
 
-    regex.test(valor)
-      ? campo.classList.remove("error")
-      : console.log("Senha inválida");
+  regex.test(valor) ? campo.classList.remove("error") : console.log("Senha inválida");
   }
 
   const successMessage = () => {
@@ -110,8 +110,8 @@ export default function CadastroForm() {
       <div className="success" style={{ display: submitted ? "" : "none" }}>
         <CadastroAlert name={name} />
       </div>
-    );
-  };
+    )
+  }
 
   const errorMessage = () => {
     return (
@@ -120,12 +120,12 @@ export default function CadastroForm() {
           <p>Por favor, insira todos os campos.</p>
         </div>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <>
-      <Header isLogin></Header>
+      <Header isLogin ></Header>
       <div className="containerCadastro">
         <div className="cadastro-body">
           <div className="formcadastro">
@@ -181,7 +181,7 @@ export default function CadastroForm() {
                 <label className="label"></label>
                 <input
                   id="password"
-                  required
+                  required 
                   minLength="6"
                   maxLength="20"
                   onSubmit={validarSenha}
@@ -191,13 +191,16 @@ export default function CadastroForm() {
                   placeholder="Digite sua senha"
                   type="password"
                 />
-                <input className="input" type="checkbox" />
+                <input
+                  className="input"
+                  type="checkbox"
+                />
                 <div className="checkbox">
-                  <input type="checkbox" id="aceitar" name="aceitar" required />
+                  <input type="checkbox" id="aceitar" name="aceitar" required/>
                   <label htmlFor="aceitar">Aceito os termos de uso</label>
                 </div>
                 <button onClick={handleSubmit} className="btn" type="submit">
-                  Cadastrar
+                  Cadastrar<img className="seta" src={seta} alt="Seta para a direita"/>
                 </button>
                 <div className="cadastrado">
                   <p>Já tem o cadastro?</p>
