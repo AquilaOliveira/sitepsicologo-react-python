@@ -46,7 +46,6 @@ function Login() {
 
       // ✅ Redireciona para página Acesso
       navigate("/acesso");
-
     } catch (err) {
       alert(err.message);
     }
@@ -99,7 +98,7 @@ function Login() {
         </div>
       </div>
 
-      <Footer id="footerlogin" />
+      <Footer isLogin />
     </>
   );
 }
