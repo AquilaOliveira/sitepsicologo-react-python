@@ -123,6 +123,9 @@ const AgendamentoForm = () => {
             type="time"
             id="horario"
             name="horario"
+            min="08:00"
+            max="18:00"
+            step="3600"
             value={formData.horario}
             onChange={handleChange}
             required
