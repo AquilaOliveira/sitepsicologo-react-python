@@ -117,7 +117,7 @@ function Acesso() {
           </div>
         )}
       </main>
-      <Footer />
+      <Footer isLogin/>
     </>
   );
 }

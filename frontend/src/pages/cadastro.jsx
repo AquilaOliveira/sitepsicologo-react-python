@@ -191,14 +191,34 @@ export default function CadastroForm() {
                   placeholder="Digite sua senha"
                   type="password"
                 />
-                <input className="input" type="checkbox" />
-                <div className="checkbox">
-                  <input type="checkbox" id="aceitar" name="aceitar" required />
-                  <label htmlFor="aceitar">Aceito os termos de uso</label>
+                <div className="checkbox"> 
+                  <label htmlFor="psicologo" className="psicologo">
+                  <input className="input" type="checkbox"/>
+                  Você é Psicólogo?</label>
                 </div>
-                <button onClick={handleSubmit} className="btn botao-cadastro"  type="submit">
+                <div className="checkbox">
+                  <label htmlFor="aceitar" className="aceitar">
+                    <input
+                      type="checkbox"
+                      id="aceitar"
+                      name="aceitar"
+                      required
+                    />
+                    <a
+                      href="https://www.gov.br/governodigital/pt-br/privacidade-e-seguranca/ppsi/guia_termo_uso_politica_privacidade.pdf"
+                      target="blank"
+                    >
+                      Aceito os termos de uso
+                    </a>
+                  </label>
+                </div>
+                <button
+                  onClick={handleSubmit}
+                  className="btn botao-cadastro"
+                  type="submit"
+                >
                   Cadastrar
-                  <Seta className="seta"/>
+                  <Seta className="seta" />
                 </button>
                 <div className="cadastrado">
                   <p>Já tem o cadastro?</p>
@@ -211,7 +231,7 @@ export default function CadastroForm() {
           </div>
         </div>
       </div>
-      <Footer></Footer>
+      <Footer isLogin ></Footer>
     </>
   );
 }

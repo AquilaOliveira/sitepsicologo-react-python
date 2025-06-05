@@ -90,7 +90,7 @@ const AgendamentoForm = () => {
   };
 
   return (
-    <section className="loeagen">
+    <section >
       <h2>Agendamento de Consulta</h2>
 
       <form className="formagendamento" onSubmit={handleSubmit}>

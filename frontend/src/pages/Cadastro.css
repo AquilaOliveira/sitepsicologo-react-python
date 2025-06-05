@@ -1,16 +1,9 @@
-.page-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
 .form-wrapper {
   flex: 1;
   overflow-y: auto;
   padding: 2rem;
 }
-.botao-cadastro{
+.botao-cadastro {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -28,7 +21,7 @@
   background-color: #f3f4f6;
   margin: 0;
   padding: 0;
-  height: calc(100vh - 160px);
+  height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -135,4 +128,18 @@ input::placeholder {
 .link:hover {
   color: rgb(38, 73, 42);
 }
+.aceitar {
+  display: inline;
+}
+.psicologo{
+  display: inline;
+}
+.checkbox {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 
+.aceitar > input, .psicologo > input {
+  width: 30px;
+}
