@@ -91,8 +91,6 @@ const AgendamentoForm = () => {
 
   return (
     <section className="loeagen">
-      <h2>Agendamento de Consulta</h2>
-
       <form className="formagendamento" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="usuario_id">{decideUsuarioTexto(usuario.tipo_usuario)}:</label>
@@ -123,6 +121,9 @@ const AgendamentoForm = () => {
             type="time"
             id="horario"
             name="horario"
+            min="08:00"
+            max="18:00"
+            step="3600"
             value={formData.horario}
             onChange={handleChange}
             required
