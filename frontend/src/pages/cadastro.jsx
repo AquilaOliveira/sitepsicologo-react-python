@@ -11,6 +11,7 @@ export default function CadastroForm() {
   const [CPF, setCPF] = useState("");
   const [tel, setTel] = useState("");
   const [password, setPassword] = useState("");
+  const [isPsicologo, setIsPsicologo] = useState(false);
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
@@ -40,6 +41,11 @@ export default function CadastroForm() {
     setSubmitted(false);
   };
 
+  const validarSenha = (senha) => {
+    const regex = /^[a-zA-Z0-9]+$/;
+    return regex.test(senha);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -54,13 +60,18 @@ export default function CadastroForm() {
       return;
     }
 
+    if (!validarSenha(password)) {
+      alert("A senha deve conter apenas letras e números.");
+      return;
+    }
+
     const novoUsuario = {
       nome: name,
       email: email,
       senha: password,
       telefone: tel,
       cpf: CPF,
-      tipo_usuario: "paciente",
+      tipo_usuario: isPsicologo ? "psicologo" : "paciente",
     };
 
     try {
@@ -80,7 +91,6 @@ export default function CadastroForm() {
 
       setSubmitted(true);
       setError(false);
-      alert(data.mensagem || "Usuário cadastrado com sucesso");
 
       // Limpar os campos
       setName("");
@@ -94,16 +104,6 @@ export default function CadastroForm() {
       setSubmitted(false);
     }
   };
-
-  function validarSenha() {
-    const campo = document.getElementById("password");
-    const valor = campo.value;
-    const regex = /^[a-zA-Z0-9]+$/;
-
-    regex.test(valor)
-      ? campo.classList.remove("error")
-      : console.log("Senha inválida");
-  }
 
   const successMessage = () => {
     return (
@@ -191,11 +191,18 @@ export default function CadastroForm() {
                   placeholder="Digite sua senha"
                   type="password"
                 />
-                <div className="checkbox"> 
-                  <label htmlFor="psicologo" className="psicologo">
-                  <input className="input" type="checkbox"/>
-                  Você é Psicólogo?</label>
+                <div className="checkbox checkbox-psicologo"> 
+                  <label className="label-psicologo">
+                    <input
+                      type="checkbox"
+                      className="input-psicologo"
+                      checked={isPsicologo}
+                      onChange={(e) => setIsPsicologo(e.target.checked)}
+                    />
+                      Sou psicólogo
+                  </label>
                 </div>
+
                 <div className="checkbox">
                   <label htmlFor="aceitar" className="aceitar">
                     <input

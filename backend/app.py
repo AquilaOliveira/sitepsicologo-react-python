@@ -76,16 +76,16 @@ def cadastrar_usuario():
     tipo_usuario = dados.get('tipo_usuario', '').lower()
 
     if not email or not nome or not senha or not telefone or not cpf or not tipo_usuario:
-        return jsonify({'erro': 'Todos os campos são obrigatórios'}), 400
+        return jsonify({'erro': 'Todos os campos sao obrigatorios'}), 400
 
     if Usuario.query.filter_by(email=email).first():
-        return jsonify({'erro': 'Email já cadastrado'}), 409
+        return jsonify({'erro': 'Email ja cadastrado'}), 409
 
     if Usuario.query.filter_by(cpf=cpf).first():
         return jsonify({'erro': 'CPF já cadastrado'}), 409
     
     if tipo_usuario not in ['paciente', 'psicologo']:
-        return jsonify({'erro': 'Tipo de usuário inválido'}), 400
+        return jsonify({'erro': 'Tipo de usuário invalido'}), 400
 
     novo_usuario = Usuario(
         email=email,
@@ -98,7 +98,7 @@ def cadastrar_usuario():
     db.session.add(novo_usuario)
     db.session.commit()
 
-    return jsonify({'mensagem': 'Usuário cadastrado com sucesso'}), 201
+    return jsonify({'mensagem': 'Usuario cadastrado com sucesso'}), 201
 
 # Rota para obter todos os usuários
 @app.route('/usuarios', methods=['GET'])
@@ -161,7 +161,7 @@ def obter_usuarios_tipo(tipo_usuario):
 def atualizar_usuario(id):
     usuario = Usuario.query.get(id)
     if not usuario:
-        return jsonify({'erro': 'Usuário não encontrado'}), 404
+        return jsonify({'erro': 'Usuario nao encontrado'}), 404
 
     dados = request.get_json()
     usuario.email = dados.get('email', usuario.email)
@@ -172,7 +172,7 @@ def atualizar_usuario(id):
     usuario.tipo_usuario = dados.get('tipo_usuario', usuario.tipo_usuario)
 
     db.session.commit()
-    return jsonify({'mensagem': 'Usuário atualizado com sucesso'}), 200
+    return jsonify({'mensagem': 'Usuario atualizado com sucesso'}), 200
 
 # Rota para deletar um usuário
 # Normalmente não precisa enviar corpo na requisição DELETE.
@@ -180,11 +180,11 @@ def atualizar_usuario(id):
 def deletar_usuario(id):
     usuario = Usuario.query.get(id)
     if not usuario:
-        return jsonify({'erro': 'Usuário não encontrado'}), 404
+        return jsonify({'erro': 'Usuario nao encontrado'}), 404
 
     db.session.delete(usuario)
     db.session.commit()
-    return jsonify({'mensagem': 'Usuário deletado com sucesso'}), 200
+    return jsonify({'mensagem': 'Usuario deletado com sucesso'}), 200
 
 # Rota de login
 @app.route('/login', methods=['POST'])
@@ -195,12 +195,12 @@ def login():
     senha = dados.get('senha')
 
     if not email or not senha:
-        return jsonify({'erro': 'Email e senha são obrigatórios'}), 400
+        return jsonify({'erro': 'Email e senha sao obrigatorios'}), 400
 
     usuario = Usuario.query.filter_by(email=email).first()
 
     if not usuario:
-        return jsonify({'erro': 'Usuário não encontrado'}), 404
+        return jsonify({'erro': 'Usuario nao encontrado'}), 404
 
     # Se estiver usando senhas em texto puro:
     if usuario.senha != senha:
@@ -270,22 +270,22 @@ def criar_consulta():
         data_consulta = datetime.strptime(dados['data'], '%Y-%m-%d').date()
         horario_consulta = datetime.strptime(dados['horario'], '%H:%M').time()
     except ValueError:
-        return jsonify({'erro': 'Formato de data ou horário inválido'}), 400
+        return jsonify({'erro': 'Formato de data ou horario invalido'}), 400
     
     # Buscar usuários
     paciente = Usuario.query.filter_by(id=dados['paciente_id'], tipo_usuario='paciente').first()
     psicologo = Usuario.query.filter_by(id=dados['psicologo_id'], tipo_usuario='psicologo').first()
 
     if not paciente:
-        return jsonify({'erro': 'Paciente não encontrado ou tipo inválido'}), 404
+        return jsonify({'erro': 'Paciente nao encontrado ou tipo invalido'}), 404
     if not psicologo:
-        return jsonify({'erro':'Psicólogo não encontrado ou tipo inválido'}), 404
+        return jsonify({'erro':'Psicologo nao encontrado ou tipo invalido'}), 404
 
     
     # Verificar se há conflito de horário na agenda do psicólogo
     conflito = Consulta.query.filter_by(data=data_consulta, horario=horario_consulta, psicologo_id=psicologo.id).first()
     if conflito:
-        return jsonify({'erro': 'Horário já ocupado para esse psicólogo'}), 409
+        return jsonify({'erro': 'Horario ja ocupado para esse psicologo'}), 409
     
     consulta = Consulta(
         data=data_consulta,
@@ -303,14 +303,14 @@ def criar_consulta():
 def listar_consultas_por_usuario(usuario_id):
     usuario = Usuario.query.get(usuario_id)
     if not usuario:
-        return jsonify({'erro': 'Usuário não encontrado'}), 404
+        return jsonify({'erro': 'Usuario nao encontrado'}), 404
 
     if usuario.tipo_usuario == 'paciente':
         consultas = Consulta.query.filter_by(paciente_id=usuario_id).all()
     elif usuario.tipo_usuario == 'psicologo':
         consultas = Consulta.query.filter_by(psicologo_id=usuario_id).all()
     else:
-        return jsonify({'erro': 'Tipo de usuário inválido'}), 400
+        return jsonify({'erro': 'Tipo de usuario invalido'}), 400
 
     resultado = []
     for c in consultas:
@@ -353,7 +353,7 @@ def atualizar_consulta(consulta_id):
         if 'psicologo_id' in dados:
             psicologo = Usuario.query.filter_by(id=dados['psicologo_id'], tipo_usuario='psicologo').first()
             if not psicologo:
-                return jsonify({'erro':'Psicólogo não encontrado ou tipo inválido'}), 404
+                return jsonify({'erro':'Psicologo nao encontrado ou tipo invalido'}), 404
             consulta.psicologo_id = psicologo.id
 
         # Verifica se já existe ums consulta com o mesmo horário, data e psicólogo
@@ -364,7 +364,7 @@ def atualizar_consulta(consulta_id):
             Consulta.psicologo_id == consulta.psicologo_id
         ).first()
         if conflito:
-            return jsonify({'erro':'Já existe uma consulta para esse horário com esse psicólogo'}), 409
+            return jsonify({'erro':'Ja existe uma consulta para esse horario com esse psicologo'}), 409
         
         db.session.commit()
         return jsonify({'mensagem':'Consulta atualizada com sucesso'})
@@ -379,7 +379,7 @@ def excluir_consulta(consulta_id):
     db.session.delete(consulta)
     db.session.commit()
 
-    return jsonify({'mensagem':'Consulta excluída com sucesso'})
+    return jsonify({'mensagem':'Consulta excluida com sucesso'})
 
 # Executar o app
 if __name__ == '__main__':

@@ -62,7 +62,7 @@ h1 {
   box-shadow: 0 0 0 3px rgba(40, 80, 44, 0.2);
 }
 
-.label {
+.label, .label-psicologo {
   display: block;
   justify-content: center;
   margin-bottom: 0.5rem;
@@ -134,12 +134,13 @@ input::placeholder {
 .psicologo{
   display: inline;
 }
-.checkbox {
+
+.checkbox, .checkbox-psicologo {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
-.aceitar > input, .psicologo > input {
+.aceitar > input, .psicologo > input, .input-psicologo{
   width: 30px;
 }

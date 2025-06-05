@@ -101,11 +101,6 @@ function Header({ isLogin = false }) {
               FAQ
             </button>
           </a>
-          <a href="#contato">
-            <button type="button" className="btn btn-primary">
-              Agendamento
-            </button>
-          </a>
         </nav>
       )}
     </header>
