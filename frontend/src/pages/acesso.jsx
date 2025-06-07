@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import AgendamentoCard from "./pagesAssets/AgendamentoCard"; 
+import AgendamentoCard from "./pagesAssets/AgendamentoCard";
 import "./Acesso.css";
 
 function Acesso() {
@@ -30,35 +30,36 @@ function Acesso() {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("usuario"));
-    
     if (!userData) {
       navigate("/login");
       return;
     }
-    
     setUsuario(userData);
     carregarConsultas(userData.id);
-
   }, [navigate]);
 
   const consultasDoUsuario = consultas;
 
   const handleCancelar = (id) => {
-
-    fetch(`http://localhost:5000/consultas/${id}`,{method: "DELETE"})
-    .then((res) => {
+    fetch(`http://localhost:5000/consultas/${id}`, { method: "DELETE" })
+      .then((res) => {
         if (!res.ok) throw new Error("Erro ao cancelar consultas");
         return res.json();
       })
-      .then((data) => {
+      .then(() => {
         if (usuario) {
-          carregarConsultas(usuario.id); // Atualiza a lista após excluir
+          carregarConsultas(usuario.id);
         }
       })
       .catch((err) => {
         alert(err.message);
         setLoading(false);
       });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("usuario");
+    navigate("/login"); 
   };
 
   if (loading) {
@@ -77,10 +78,16 @@ function Acesso() {
     <>
       <Header isLogin={true} />
       <main className="acesso-container">
+        <button className="btn-sair" onClick={handleLogout}>
+          Sair
+        </button>
+
         {usuario && (
           <>
             <h1>Olá, {usuario.nome}</h1>
-            <p>Você está logado como <b>{usuario.tipo_usuario}</b></p>
+            <p>
+              Você está logado como <b>{usuario.tipo_usuario}</b>
+            </p>
           </>
         )}
 
@@ -102,9 +109,9 @@ function Acesso() {
               <AgendamentoCard
                 key={item.id}
                 data={item.data}
-                hora={item.hora}           // ajustado
-                nomePaciente={item.nomePaciente}  // ajustado
-                psicologa={item.psicologo}    // ajustado
+                hora={item.hora}
+                nomePaciente={item.nomePaciente}
+                psicologa={item.psicologo}
                 onCancelar={() => handleCancelar(item.id)}
               />
             ))}
@@ -117,7 +124,7 @@ function Acesso() {
           </div>
         )}
       </main>
-      <Footer isLogin/>
+      <Footer isLogin />
     </>
   );
 }

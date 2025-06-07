@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import Login from './pages/login';
 import CadastroForm from './pages/cadastro';
 import Acesso from './pages/acesso';
-import AgendarConsulta from "./pages/AgendarConsulta"; // importe o novo componente
+import AgendarConsulta from "./pages/AgendarConsulta";
 import AgendamentoContato from './components/AgendamentoContato/AgendamentoContato';
 
 function App() {

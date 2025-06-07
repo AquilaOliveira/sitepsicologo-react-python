@@ -1,7 +1,7 @@
 // src/components/AgendamentoContato/AgendamentoContato.jsx
 import React from 'react';
-import AgendamentoForm from './AgendamentoForm'; // ajuste se o caminho for diferente
-import LocalSection from '../LocalSection/LocalSection'; // ajuste o caminho se necessário
+import AgendamentoForm from './AgendamentoForm'; 
+import LocalSection from '../LocalSection/LocalSection'; 
 
 const AgendamentoContato = () => {
   return (

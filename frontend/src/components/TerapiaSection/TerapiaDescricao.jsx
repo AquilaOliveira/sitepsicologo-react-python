@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 const TerapiaDescricao = () => {
   return (
     <div className="terapia-descricao">

@@ -12,21 +12,20 @@ const AgendamentoForm = () => {
     mensagem: '',
     data: null,
     horario: '',
-    usuario_id: '',  // aqui vai o id selecionado
+    usuario_id: '', 
   });
 
-  // Buscar lista de psicólogos do backend
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        if(usuario.tipo_usuario == "psicologo"){
-          const response = await fetch('http://localhost:5000/usuarios/paciente'); // ajuste a URL se necessário
+        if(usuario.tipo_usuario === "psicologo"){
+          const response = await fetch('http://localhost:5000/usuarios/paciente'); 
           if (!response.ok) throw new Error('Erro ao buscar pacientes');
           const dados = await response.json();
           setUsuarios(dados);
         }
-        else if(usuario.tipo_usuario == "paciente"){
-          const response = await fetch('http://localhost:5000/usuarios/psicologo'); // ajuste a URL se necessário
+        else if(usuario.tipo_usuario === "paciente"){
+          const response = await fetch('http://localhost:5000/usuarios/psicologo'); 
           if (!response.ok) throw new Error('Erro ao buscar psicologos');
           const dados = await response.json();
           setUsuarios(dados);
@@ -37,7 +36,7 @@ const AgendamentoForm = () => {
     };
 
     fetchUsuarios();
-  }, []);
+  }, [usuario]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,7 +60,6 @@ const AgendamentoForm = () => {
       return;
     }
 
-    // Formatar data para string 'YYYY-MM-DD'
     const dataFormatada = formData.data ? formData.data.toISOString().split('T')[0] : null;
 
     if (!dataFormatada || !formData.horario) {
@@ -69,7 +67,7 @@ const AgendamentoForm = () => {
       return;
     }
 
-    const novaConsulta = decideUsuarioObjeto(usuario, formData.usuario_id, dataFormatada, formData.horario)
+    const novaConsulta = decideUsuarioObjeto(usuario, formData.usuario_id, dataFormatada, formData.horario);
 
     try {
       const response = await fetch('http://localhost:5000/consultas', {
@@ -90,7 +88,7 @@ const AgendamentoForm = () => {
   };
 
   return (
-    <section >
+    <section>
       <h2>Agendamento de Consulta</h2>
 
       <form className="formagendamento" onSubmit={handleSubmit}>
@@ -103,12 +101,12 @@ const AgendamentoForm = () => {
             onChange={handleChange}
             required
           >
-                <option value="">Selecione um {decideUsuarioTexto(usuario.tipo_usuario)}</option>
-                {usuarios.map((usuario) => (
-                  <option key={usuario.id} value={usuario.id}>
-                    {usuario.nome}
-                  </option>
-                ))}
+            <option value="">Selecione um {decideUsuarioTexto(usuario.tipo_usuario)}</option>
+            {usuarios.map((usuario) => (
+              <option key={usuario.id} value={usuario.id}>
+                {usuario.nome}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -139,21 +137,21 @@ const AgendamentoForm = () => {
 };
 
 function decideUsuarioTexto(usuario){
-  if(usuario == "paciente")
+  if(usuario === "paciente")
     return "psicólogo(a)";
-  else if(usuario == "psicologo")
+  else if(usuario === "psicologo")
     return "paciente";
 }
 
 function decideUsuarioObjeto(usuario, formDataUsuarioId, formDataData, formDataHorario){
-  if(usuario.tipo_usuario == "paciente")
+  if(usuario.tipo_usuario === "paciente")
     return {
       paciente_id: usuario.id,
       psicologo_id: Number(formDataUsuarioId),
       data: formDataData,
       horario: formDataHorario,
     };
-  else if(usuario.tipo_usuario == "psicologo")
+  else if(usuario.tipo_usuario === "psicologo")
     return {
       paciente_id: Number(formDataUsuarioId),
       psicologo_id: usuario.id,
@@ -161,4 +159,5 @@ function decideUsuarioObjeto(usuario, formDataUsuarioId, formDataData, formDataH
       horario: formDataHorario,
     };
 }
+
 export default AgendamentoForm;

@@ -41,27 +41,27 @@ function Login() {
         throw new Error(data.erro || "Erro ao fazer login");
       }
 
-      // ✅ Salva o usuário no localStorage
       localStorage.setItem("usuario", JSON.stringify(data.usuario));
-
-      // ✅ Redireciona para página Acesso
       navigate("/acesso");
     } catch (err) {
       alert(err.message);
     }
   };
 
-  const errorMessage = () => {
-    return (
-      <div className="error" style={{ display: error ? "" : "none" }}>
-        <p>Por favor, insira todos os campos.</p>
-      </div>
-    );
-  };
+  const errorMessage = () => (
+    <div className="error" style={{ display: error ? "" : "none" }}>
+      <p>Por favor, insira todos os campos.</p>
+    </div>
+  );
 
   return (
     <>
       <Header isLogin />
+
+      <button className="btn-voltar-home" onClick={() => navigate("/")}>
+        Voltar 
+      </button>
+
       <div className="login-container">
         <div className="login-card">
           <h1>Login</h1>
@@ -86,7 +86,6 @@ function Login() {
                 required
               />
             </div>
-
             <button type="submit" className="login-button">
               Entrar
             </button>

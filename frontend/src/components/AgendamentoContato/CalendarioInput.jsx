@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'; // Importa o CSS do react-datepicker
+import 'react-datepicker/dist/react-datepicker.css'; 
 
 const CalendarioInput = ({ selectedDate, onChange }) => {
   const [unavailableDates, setUnavailableDates] = useState([]);

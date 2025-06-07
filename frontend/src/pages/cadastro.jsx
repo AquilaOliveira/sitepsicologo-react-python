@@ -92,7 +92,6 @@ export default function CadastroForm() {
       setSubmitted(true);
       setError(false);
 
-      // Limpar os campos
       setName("");
       setEmail("");
       setCPF("");
