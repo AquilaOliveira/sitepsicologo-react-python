@@ -6,17 +6,22 @@
 
 .botao-cadastro {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 0.75rem;
 }
+
 
 .seta {
   height: 15px;
   width: 20px;
-  margin-left: 15px;
+  display: inline-block;
+  position: relative;
+  top: 1.5px; 
+  margin-right: 8px;
 }
+
+
 
 .cadastro-body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -198,4 +203,17 @@ input::placeholder {
     justify-content: flex-start;
     padding-left: 10px;
   }
+}
+
+.containerCadastro {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cadastro-body {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
