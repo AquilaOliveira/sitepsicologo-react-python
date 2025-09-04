@@ -22,7 +22,7 @@ Ele permite que usuários acessem o sistema e criem uma conta ou faça um login,
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [React](https://reactjs.org/)
-- API [Flask](https://flask-sqlalchemy.readthedocs.io/en/stable/api/)
+- [Flask](https://flask-sqlalchemy.readthedocs.io/en/stable/api/)
 - [Python](https://www.python.org/)
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS) 
 
